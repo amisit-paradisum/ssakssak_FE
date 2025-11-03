@@ -193,7 +193,7 @@ export function MealScreen({ onNavigate }: MealScreenProps) {
     ? "bg-gradient-to-b from-[#000000] to-[#4325A5]"
     : "bg-gradient-to-b from-[#f0f0f0] to-[#d0d0ff]"
   const textColor = settings.highContrastMode ? "text-white" : "text-gray-200"
-  const cardBg = settings.highContrastMode ? "bg-[#1a1a2e]" : "bg-[#2a2a3e]"
+  const cardBg = settings.highContrastMode ? "bg-[#1a1a2e]/30" : "bg-[#2a2a3e]/30"
 
   const variants = {
     enter: (dir: number) => ({
@@ -272,11 +272,11 @@ export function MealScreen({ onNavigate }: MealScreenProps) {
             onClick={handleNextMeal}
           />
 
-          <div className="relative w-[80%] h-[350px]">
+          <div className="relative font-bold w-[80%] h-[350px]">
             <AnimatePresence custom={direction}>
               <motion.div
                 key={selectedMeal + currentDate.toDateString()}
-                className={`absolute w-full h-full ${cardBg} backdrop-blur-sm rounded-3xl p-5 border ${
+                className={`absolute w-full h-full ${cardBg} backdrop-blur-ls rounded-3xl p-5 border ${
                   settings.highContrastMode ? 'border-white/20' : 'border-white/10'
                 } flex flex-col justify-center`}
                 custom={direction}
@@ -292,7 +292,7 @@ export function MealScreen({ onNavigate }: MealScreenProps) {
                     {currentMenu.map((item, i) => (
                       <p
                         key={i}
-                        className={`text-lg font-medium tracking-wide ${
+                        className={`text-lg font-large tracking-wide ${
                           isBookmarked(item)
                             ? 'text-[#5B9FFF] font-bold'
                             : textColor
