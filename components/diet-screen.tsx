@@ -156,7 +156,7 @@ export function DietScreen({ onNavigate }: DietScreenProps) {
     : 0
 
   const isLess = calorieDiff < 0
-  const emoji = isLess ? "🔥" : <img src="/logos/fireball.svg" className="h-30 flex-2" alt="mealgo logo" />
+  const emoji = <img src="/logos/fireball.svg" className="h-30 flex-2" alt="mealgo logo" />
 
   return (  
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#000000] to-[#4325A5]">
@@ -200,7 +200,7 @@ export function DietScreen({ onNavigate }: DietScreenProps) {
                 type="number"
                 value={percentage}
                 onChange={(e) => setPercentage(e.target.value)}
-                className="w-full h-12 bg-transparent border-2 border-white rounded-xl text-white text-center text-lg font-medium"
+                className="w-full h-12 bg-transparent border-2 text-white text-center text-lg font-medium"
                 placeholder="0-100"
                 min="0"
                 max="100"
