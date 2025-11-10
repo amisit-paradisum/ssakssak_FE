@@ -53,7 +53,7 @@ export function SettingsScreen({ onBack }: SettingsScreenProps) {
     <div className="flex flex-col min-h-screen px-6 pt-12 bg-[#140D2B]">
       <div className="flex items-center gap-4 mb-8">
         <Button variant="ghost" size="icon" className="text-white" onClick={onBack}>
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-8! h-8!" />
         </Button>
         <h1 className="text-2xl font-bold text-white">설정</h1>
       </div>

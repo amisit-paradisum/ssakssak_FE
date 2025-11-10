@@ -9,13 +9,21 @@ interface BottomNavProps {
 }
 
 export function BottomNav({ currentTab, onNavigate }: BottomNavProps) {
+  const handleBookmarkClick = () => {
+    onNavigate("meal")
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    })
+  }
+
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-[#0f0a1e] border-t border-white/10">
       <div className="flex items-center justify-around px-6 py-4 max-w-md mx-auto">
         <Button
           variant="ghost"
-          className={`flex flex-col items-center gap-1 ${currentTab === "bookmark" ? "text-white" : "text-white/50"}`}
-          onClick={() => onNavigate("bookmark")}
+          className={`flex flex-col items-center gap-1 ${currentTab === "bookmark" ? "text-purple-400" : "text-white/50"}`}
+          onClick={handleBookmarkClick}
         >
           <Calendar className="w-6 h-6" />
           <span className="text-xs">내 시간표</span>

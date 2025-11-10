@@ -323,23 +323,23 @@ export function MealScreen({ onNavigate }: MealScreenProps) {
   return (
     <div className="flex flex-col min-h-screen">
       <div className={`flex-1 pt-5 pb-24 ${bgGradient} relative flex flex-col`}>
-        <div className="flex justify-end mb-4">
+        <div className="flex justify-end mb-6">
           <div className="flex">
+          <Button
+            variant="ghost"
+            size="icon"
+            className={`${textColor} hover:bg-white/10 w-12 h-12`}
+            onClick={() => onNavigate("bookmark")}
+          >
+            <Bookmark className="w-5.5! h-5.5!" />
+          </Button>
             <Button
               variant="ghost"
               size="icon"
-              className={`${textColor} hover:bg-white/10`}
-              onClick={() => onNavigate("bookmark")}
-            >
-              <Bookmark className="w-5 h-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`${textColor} hover:bg-white/10`}
+              className={`${textColor} hover:bg-white/10 w-12 h-12`}
               onClick={() => onNavigate("settings")}
             >
-              <MoreVertical className="w-5 h-5" />
+              <MoreVertical className="w-6! h-6!" />
             </Button>
           </div>
         </div>
@@ -360,7 +360,7 @@ export function MealScreen({ onNavigate }: MealScreenProps) {
           <div className="absolute left-0 top-0 bottom-0 w-[15%] z-10 cursor-pointer" onClick={handlePrevMeal} />
           <div className="absolute right-0 top-0 bottom-0 w-[15%] z-10 cursor-pointer" onClick={handleNextMeal} />
 
-          <div className="relative font-bold w-[75%] min-h-[350px] h-[400px] rounded-3xl">
+          <div className="relative font-bold w-[75%] min-h-[400px] rounded-3xl">
             <AnimatePresence custom={direction}>
               <motion.div
                 key={selectedMeal + currentDate.toDateString()}
@@ -372,7 +372,7 @@ export function MealScreen({ onNavigate }: MealScreenProps) {
                 exit="exit"
               >
                 {/* 헤더 - 이제 애니메이션에 포함됨 */}
-                <div className="flex items-center justify-between p-5 px-7 border-b border-white/10">
+                <div className="flex items-center justify-between p-4 px-7 ">
                   <div className={`text-2xl font-bold ${mealColors[selectedMeal]}`}>
                     {mealNames[selectedMeal]}
                   </div>
@@ -384,15 +384,15 @@ export function MealScreen({ onNavigate }: MealScreenProps) {
                 </div>
 
                 {/* 메뉴 내용 */}
-                <div className="flex-1 p-5 flex flex-col justify-center">
+                <div className="flex-1 p-3 flex flex-col justify-center">
                   {loadingMeals ? (
                     <div className={`text-center py-8 ${textColor} opacity-70`}>급식 정보를 불러오는 중...</div>
                   ) : currentMenu.length > 0 ? (
-                    <div className="space-y-2.5 text-center flex flex-col">
+                    <div className="space-y-3.5 text-center flex flex-col">
                       {currentMenu.map((item, i) => (
                         <p
                           key={i}
-                          className={`text-lg font-large tracking-wide ${
+                          className={`text-xl font-large tracking-wide ${
                             isBookmarked(item) ? 'text-[#5B9FFF] font-bold' : textColor
                           }`}
                         >
@@ -421,7 +421,7 @@ export function MealScreen({ onNavigate }: MealScreenProps) {
             <select
               value={settings.grade}
               onChange={(e) => setSettings((prev) => ({ ...prev, grade: e.target.value }))}
-              className="rounded-lg px-3 py-1.5 bg-transparent border border-white/20 text-white/90 focus:outline-none"
+              className="rounded-lg px-4 py-1.5 bg-transparent border border-white/20 text-white/90 focus:outline-none"
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -431,7 +431,7 @@ export function MealScreen({ onNavigate }: MealScreenProps) {
             <select
               value={settings.className}
               onChange={(e) => setSettings((prev) => ({ ...prev, className: e.target.value }))}
-              className="rounded-lg px-3 py-1.5 bg-transparent border border-white/20 text-white/90 focus:outline-none"
+              className="rounded-lg px-4 py-1.5 bg-transparent border border-white/20 text-white/90 focus:outline-none"
             >
               <option value="1">1</option>
               <option value="2">2</option>
