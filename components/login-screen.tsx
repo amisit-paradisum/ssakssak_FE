@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import Script from "next/script"
-import api from "../lib/api/app"
+import api from "../lib/api/api"
 
 interface LoginScreenProps {
   onNext: () => void
@@ -72,16 +72,17 @@ export function LoginScreen({ onNext }: LoginScreenProps) {
               { oauth: response.code },
               { withCredentials: false }
             )
-            
+            console.log(response.code)
             console.log("✅ === 서버 응답 성공 ===")
             console.log("  - Status:", res.status)
             console.log("  - Status Text:", res.statusText)
             console.log("  - Headers:", res.headers)
             console.log("  - Data:", res.data)
-            
+            setIsLoading(false)
             onNext()
             
           } catch (err: any) {
+            console.log(response.code)
             console.error("❌ === 서버 요청 실패 ===")
             console.error("  - Error 타입:", err.name)
             console.error("  - Error 코드:", err.code)
